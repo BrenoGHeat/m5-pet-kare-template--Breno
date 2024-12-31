@@ -10,7 +10,6 @@ class SexChoices(models.TextChoices):
 
 
 class Pet(models.Model):
-    SEX_CHOICES = [("Male", "Male"), ("Female", "Female"), ("Not Informed", "Not Informed")]
 
     name = models.CharField(max_length=50)
     age = models.IntegerField()

@@ -13,9 +13,9 @@ class SexSerializer(serializers.Serializer):
 
 class PetSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    name = serializers.CharField()
+    name = serializers.CharField(max_length=50)
     age = serializers.IntegerField()
     weight = serializers.FloatField()
-    sex = serializers.CharField()
-    group = GroupSerializer(many=True)
+    sex = serializers.ChoiceField(choices=SexChoices.choices, default=SexChoices.INFORMED)
+    group = GroupSerializer()
     trait = TraitSerializer(many=True)
