@@ -1,11 +1,11 @@
 from rest_framework import serializers
 from .models import SexChoices
-from groups import GroupSerializer
-from traits import TraitSerializer
+from groups.serializers import GroupSerializer
+from traits.serializers import TraitSerializer
 
 
 class SexSerializer(serializers.Serializer):
-    name = serializers.CharField(max_lenght=20)
+    name = serializers.CharField(max_length=20)
     sex = serializers.ChoiceField(
         choices=SexChoices.choices, default=SexChoices.INFORMED
     )
@@ -18,4 +18,4 @@ class PetSerializer(serializers.Serializer):
     weight = serializers.FloatField()
     sex = serializers.ChoiceField(choices=SexChoices.choices, default=SexChoices.INFORMED)
     group = GroupSerializer()
-    trait = TraitSerializer(many=True)
+    traits = TraitSerializer(many=True)
